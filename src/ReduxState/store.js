@@ -1,5 +1,6 @@
-import {configureStore, createSlice} from '@reduxjs/toolkit'
+import {configureStore} from '@reduxjs/toolkit'
 import Auth from './Auth/Auth';
+import CartSlice from './Cart/Cart';
 // import { createStore } from 'redux'
 
 // const reducer = (state = {counter:0}, action) => {
@@ -12,30 +13,30 @@ import Auth from './Auth/Auth';
 
 // }
 
-const counterSlice = createSlice({
-    name : 'counter',
-    initialState : {counter : 0},
-    reducers : {
-        increament(state){
-            state.counter++
-        },
-        decreament(state){
-            state.counter--
-        },
-        addBy(state, action){
-            state.counter += action.payload;
-        }
-    }
-})
+// const counterSlice = createSlice({
+//     name : 'counter',
+//     initialState : {counter : 0},
+//     reducers : {
+//         increament(state){
+//             state.counter++
+//         },
+//         decreament(state){
+//             state.counter--
+//         },
+//         addBy(state, action){
+//             state.counter += action.payload;
+//         }
+//     }
+// })
 
 export const store = configureStore({
     reducer : {
         auth : Auth.reducer,
-        counter : counterSlice.reducer
+        cart : CartSlice.reducer
     }
 })
 
-export const action = counterSlice.actions
+// export const action = counterSlice.actions
 
 
 // export const store = createStore(reducer)

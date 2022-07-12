@@ -1,8 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import './Navbar.css'
+import { useSelector } from "react-redux"
 import {GoHome} from 'react-icons/go'
+import {AiOutlineShoppingCart} from 'react-icons/ai'
+import {CgProfile} from 'react-icons/cg'
 
 export const Navbar = () => {
+
+    const cart = useSelector((state) => state.cart)
+    const navigate = useNavigate()
 
     return(
         <>
@@ -18,15 +24,24 @@ export const Navbar = () => {
                         <Link to='/' className='link' >
                             <GoHome />
                         </Link>
-                    </li>
+                    </li>&emsp;
                     <li className="nav-item">
+                        <Link to='/' className='link' >
+                            <CgProfile />
+                        </Link>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item"> 
                     </li>
                 </ul>
-                <form className="d-flex">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn btn-outline-success" type="submit">Search</button>
+                <form className="d-flex pe-5">
+                    <button className="btn btn-success d-flex flex-row justify-content-center align-items-center"
+                            onClick={(e) => {e.preventDefault() 
+                                navigate('/cart')}}
+                    >
+                        <Link to='/'className='link'>
+                            <AiOutlineShoppingCart style={{color:'#ffffff'}}  />
+                        </Link><span style={{fontSize:'13px'}} className="ps-2">{cart.qts}</span> 
+                    </button>     
                 </form>
                 </div>
             </div>
